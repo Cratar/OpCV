@@ -1,0 +1,30 @@
+void getContours(cv::Mat imgDil, cv::Mat img) {
+	std::vector<std::vector<cv::Point>> contours;
+	std::vector<cv::Vec4i> hierarcgh;
+
+	cv::findContours(imgDil, contours, hierarcgh, cv::RETR_EXTERNAL, cv::CHAIN_APPROX_SIMPLE);
+	cv::drawContours(imgDil, contours, -1, cv::Scalar(255, 228, 200), 2);
+	
+} 
+
+void main() {
+cv::Mat imgGray, imgBlur, imgCanny, imgDil, imgErode;
+
+	std::string path = "Surs/lfigur.jpg";
+	cv::Mat img = cv::imread(path);
+
+	cv::cvtColor(img, imgGray, cv::COLOR_BGR2GRAY);
+	cv::GaussianBlur(img, imgBlur, cv::Size(3, 3), 3, 4);
+	cv::Canny(imgBlur, imgCanny, 25, 72); //25 ,75
+	cv::Mat kernel = cv::getStructuringElement(cv::MORPH_RECT, cv::Size(3, 3));
+	cv::dilate(imgCanny, imgDil, kernel);
+	cv::erode(imgDil, imgErode, kernel);
+
+	getContours(imgDil, img);
+	cv::imshow("Image", img);
+	/*cv::imshow("Image Gray", imgGray);
+	cv::imshow("Image Blur", imgBlur);
+	cv::imshow("Image Canny", imgCanny);*/
+	cv::imshow("Image Dil", imgDil);
+	cv::waitKey(0);
+}

@@ -1,0 +1,5 @@
+﻿  OPenCV2.cpp
+D:\Cod_C++\OpenV\OpenCV\OpenCV\OPenCV2.cpp(185,21): warning C4129: l: неизвестная escape-последовательность
+  OpenCV.vcxproj -> D:\Cod_C++\OpenV\OpenCV\x64\Debug\OpenCV.exe
+  "pwsh.exe" не является внутренней или внешней
+  командой, исполняемой программой или пакетным файлом.
